@@ -1,0 +1,54 @@
+<html>
+  <head>
+
+    <title>Imaginary Plant</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/4817e44b-5a6b-44ee-9bc8-f3431a700635/lettuce.jpg?v=1693276772913">
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!--Assets-->
+      <a-assets>
+        <a-asset-item id="heart" src="https://cdn.glitch.global/51232c96-434c-4861-97af-d4b7779db3dc/plant.glb?v=1694619546544"></a-asset-item>
+        <img id="metal-normal" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/metalplates-NRM.jpg?v=1693544717843">
+        <img id="lettuce-img" src="https://cdn.glitch.global/4817e44b-5a6b-44ee-9bc8-f3431a700635/lettuce.jpg?v=1693276772913">
+        <img id="cgt-img1" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/v1.png?v=1693981450752">
+        <img id="cgt-img2" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/v5.1.png?v=1693981464359">
+        <img id="cgt-img3" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/v6.png?v=1693981473078">
+        <img id="gradient1" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/gradient.jpeg?v=1693983142950">
+        <img id="gradient2" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/gradient2.jpeg?v=1693983140602">
+      </a-assets>
+      
+      <a-camera
+        position="0 1 5"
+        rotation="0 180 0"
+        
+        cursor-visible="true"
+        cursor-scale="2"
+        cursor-color="#0095DD"
+        cursor-opacity="0.5">
+      </a-camera>
+      
+      <a-entity environment="preset: volcano; groundColor: #445; grid: cross"></a-entity>
+      
+      <a-sky shadow="cast: false; receive: true;" radius="10"
+             src="https://cdn.glitch.global/51232c96-434c-4861-97af-d4b7779db3dc/abstract-red-blood-cells-texture-free-thumb37.jpg?v=1694621557906"
+                material="color: #FFFFFF; transparent: true; opacity: .5"></a-sky>
+      
+      <!-- model-->
+      <a-entity gltf-model="#heart" position="0 0 0"
+                material="color: #FFFFFF; transparent: true; opacity: 1"></a-entity>
+      
+      <!--lights-->
+      
+      <a-light type="point" color="#FFFFFF" intensity="2" position="0 -5 0"
+             light="type:point; castShadow:true; receiveShadow:true;"></a-light>
+   
+      
+      <a-plane rotation="-90 0 0" scale="1000 1000 1" position="0 -8 0" shadow="receive: true"></a-plane>
+      
+
+    </a-scene>
+  </body>
+</html>

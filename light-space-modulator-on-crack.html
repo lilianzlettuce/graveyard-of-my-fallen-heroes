@@ -1,0 +1,186 @@
+<html>
+  <head>
+
+    <title>Light Space Modulator Animation</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/4817e44b-5a6b-44ee-9bc8-f3431a700635/lettuce.jpg?v=1693276772913">
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+    <script src="scripts/lsm2/wall-script.js"></script>
+    <script src="scripts/lsm2/fall-on-touch.js"></script>
+  </head>
+  <body>
+    <a-scene add-walls physics="debug: false; friction: 0.1; restitution: 0.5;">
+      <!--Assets-->
+      <a-assets>
+        <img id="metal-normal" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/metalplates-NRM.jpg?v=1693544717843">
+        <img id="lettuce-img" src="https://cdn.glitch.global/4817e44b-5a6b-44ee-9bc8-f3431a700635/lettuce.jpg?v=1693276772913">
+        <img id="cgt-img1" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/v1.png?v=1693981450752">
+        <img id="cgt-img2" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/v5.1.png?v=1693981464359">
+        <img id="cgt-img3" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/v6.png?v=1693981473078">
+        <img id="gradient1" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/gradient.jpeg?v=1693983142950">
+        <img id="gradient2" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/gradient2.jpeg?v=1693983140602">
+      </a-assets>
+      
+      <a-camera
+        kinematic-body="gravity:0;"
+        position="0 1 0"
+        rotation="0 180 0"
+        cursor-visible="true"
+        cursor-scale="2"
+        cursor-color="#0095DD"
+        cursor-opacity="0.5">
+          <a-cursor></a-cursor>
+      </a-camera>
+      
+      <a-sky radius="1000" color="#e6e6e6"></a-sky>
+      
+      <!--<a-torus-knot arc="180" p="2" q="7" radius="5" radius-tubular="1" position="0 0 10"
+                    shadow="cast: true; receive: true;" 
+                    material="color: cyan; transparent: true; opacity: 0.5"></a-torus-knot>-->
+      
+      <!--donut-->
+      <a-torus color="#4CC3D9" arc="180" radius="5" radius-tubular="01" 
+               scale="0 0 1"
+             rotation="0 0 0" position="0 0 20"
+               animation="property: scale;
+                to: 2 2 1;
+                easing: easeInOutQuad;
+                delay: delay;
+                dir: alternate;
+                dur: 2000;
+                loop: true;"></a-torus>
+      <a-torus color="#ff8ce6" arc="180" radius="5" radius-tubular="01" 
+               scale="0 0 1"
+              rotation="180 0 0" position="0 0 20"
+               animation="property: scale;
+                to: 2 2 1;
+                easing: easeInOutQuad;
+                delay: delay;
+                dir: alternate;
+                dur: 2000;
+                loop: true;"></a-torus>
+      
+      <!--aggywaggy-->
+      <a-entity fall-on-touch look-at="[camera]" position="40 20 -15">
+        <a-box look-at="[camera]"
+               position="40 20 -15" rotation="0 -45 0" scale="30 120 0"
+               shadow="cast: true; receive: true;"
+               material="transparent: true; opacity: 0.9"
+               src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/Screenshot_2023-09-01_at_2.22.14_AM-removebg-preview.png?v=1693549417086"></a-box>
+      </a-entity>
+      <!--braddicus-->
+      <a-entity fall-on-touch look-at="[camera]">
+        <a-sphere position="-80 -2 -30" rotation="0 0 5" scale="30 30 30"
+             color="#ff8ce6"
+             material="transparent: true; opacity: 1"
+             src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/Screenshot_2023-08-24_at_12.49.24_AM-removebg-preview.png?v=1693548594738"></a-sphere>
+      </a-entity>
+      
+      <!--lettuce sphere-->
+      <a-entity fall-on-touch
+                position="0 0 -90" scale=".1 .1 .1" rotation="0 -180 0"
+                animation="property: rotation; to: 0 180 0; loop: true; easing: linear; dur: 9000">
+        <a-sphere position="0 0 -105" rotation="0 0 0" radius="40"  
+                  color="#9eff6e" 
+                  material="transparent: false; opacity: 1; intensity:0.1;"
+                  src="#lettuce-img"
+                  shadow="cast: true; receive: true;"></a-sphere>
+      </a-entity>
+      <!--pink sphere-->
+      <a-entity fall-on-touch
+                position="0 0 -90" rotation="0 60 0" scale=".1 .1 .1"
+                animation="property: rotation; to: 0 420 0; loop: true; easing: linear; dur: 9000">
+        <a-sphere position="0 0 -105" arc="360" radius="2" scale="20 20 20"  color="#ff8ce6" 
+                  material="transparent: false; opacity: 1; intensity:0.1;"
+                  normal-map="#metal-normal"
+                  shadow="cast: true; receive: true;"></a-sphere>
+      </a-entity>
+      
+      <!--animation-->
+      
+      <!--<a-entity position="0 4 0"
+                animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 5000">
+        <a-box
+               color="green"
+               position="2 0 0"
+               animation="property: rotation; to: 0 -360 90; loop: true; easing: linear; dur: 5000">
+        </a-box>
+      </a-entity>-->
+      
+      <!-- floating shapes-->
+      
+      <a-torus-knot fall-on-touch
+                    arc="180" p="2" q="7" radius="5" radius-tubular=".1" 
+                    src="#gradient1"
+                    position="1 4 -2" rotation="0 0 0" color= "#ffffff"
+                    shadow="cast: true; receive: true;"
+                    material="transparent: true; opacity: 0.6"
+                    animation="property: rotation; to: 0 0 360; loop: true; easing: linear; dur: 25000"></a-torus-knot>
+
+      <a-octahedron fall-on-touch 
+                    position="-1 4 -2" rotation="0 0 0" radius="1" color= "#d5ff8c"
+                    animation="property: position; to: -1 5 -2; loop: true; easing: easeInOutQuad; delay: 1000; dur: 2000; dir: alternate"
+                    shadow="cast: true; receive: true;"
+                    material="transparent: true; opacity: .9"></a-octahedron>
+      <a-octahedron fall-on-touch
+                    position="-3 4 -3" rotation="0 0 0" radius="1" 
+                    color= "#a1e0ff" scale=".5 1 .5"
+                    shadow="cast: true; receive: true;"
+                    material="transparent: true; opacity: .9"
+                    animation="property: rotation; to: 0 360 0; loop: true; easing: easeInOutQuad; dur: 7000;"
+             ></a-octahedron>
+      <a-box fall-on-touch 
+             position="-1 2 -4" rotation="45 -45 45" radius="1" 
+             src="#cgt-img1"
+             color= "#ff8ce6" scale=".7 .7 .7"
+             shadow="cast: true; receive: true;"
+             material="transparent: true; opacity: 1"
+             animation="property: position; to: -1 4.5 -4; loop: true; easing: easeInOutQuad; delay: 1500; dur: 2200; dir: alternate"
+                    ></a-box>
+      <a-icosahedron fall-on-touch
+                     position="1 2.8 -3" rotation="0 45 0" radius="1"
+                     shadow="cast: true; receive: true;"
+                     material="color: #8c90ff; transparent: true; opacity: .9"
+                     animation="property: position; to: 1 4 -3; loop: true; easing: easeInOutQuad; delay: 0; dur: 1800; dir: alternate"
+                    ></a-icosahedron>
+      <a-box fall-on-touch
+             position="-2 0.5 -2" rotation="45 45 45" scale="4 4 .8"
+             src="#gradient1"
+             shadow="cast: true; receive: true;"
+             material="color: #70fff8; transparent: true; opacity: 0.8"
+             animation="property: rotation; to: 405 45 45; loop: true; easing: linear; dur: 25000"
+             ></a-box>
+      <a-box fall-on-touch
+             position="-2 0.5 -7.5" rotation="-25 45 45" scale="5 5 1"
+             shadow="cast: true; receive: true;"
+             material="color: #ff63db; transparent: true; opacity: 0.7"
+             animation="property: rotation; to: -25 405 45; loop: true; easing: linear; dur: 15000"
+             ></a-box>
+      
+      <!--<a-sphere position="0 0 0" rotation="45 45 45" radius="1" scale="5 5 5"
+                shadow="cast: false; receive: true;"
+                material="color: #FFFFFF; transparent: true; opacity: .9"></a-sphere>-->
+      
+      <!--lights-->
+      
+      <a-entity position="0 0 0"
+                animation="property: rotation; to: 0 -360 0; loop: true; easing: linear; dur: 10000">
+        <a-light type="directional" color="#FFFFFF" intensity="1" position="0 1 -5"
+             light="type:directional; castShadow:true; receiveShadow:true;
+                    shadowCameraLeft:-20; shadowCameraRight:11;
+                    shadowCameraTop:17;"></a-light>
+      </a-entity>
+      <a-light type="directional" color="#ff75cd" intensity="0" position="0 1 -5" 
+             light="type:directional; castShadow:true; receiveShadow:true;"></a-light>
+      <a-light type="directional" color="#FFFFFF" intensity="0" position="20 10 20"></a-light>
+      <a-light type="ambient" intensity="0" color="#0009ff"></a-light>
+      <a-light type="ambient" intensity="1" color="#ffadb6"></a-light>
+      
+      <a-plane static-body rotation="-90 0 0" scale="1000 1000 1" position="0 -15 0" shadow="receive: true"></a-plane>
+      
+
+    </a-scene>
+  </body>
+</html>

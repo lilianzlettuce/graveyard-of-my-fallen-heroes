@@ -1,0 +1,184 @@
+<html>
+  <head>
+    <title>Potty Simulator 2000</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script>
+    AFRAME.registerComponent('play-pause', {
+    init: function () {
+        var myVideo = document.querySelector('#flickering-lights');
+        var v2 = document.querySelector('#basement1');
+        var v3 = document.querySelector('#basement2');
+        var v4 = document.querySelector('#basement3');
+        var videoControls = document.querySelector('#videoControls');
+        this.el.addEventListener('click', function () {
+            if(myVideo.paused){
+                myVideo.play();
+                v2.play();
+              v3.play();
+              v4.play();
+                videoControls.setAttribute('src', '#pause');
+            } else {
+                myVideo.pause();
+                v2.pause();
+              v3.pause();
+              v4.pause();
+                videoControls.setAttribute('src', '#play');
+            }
+        });
+    }
+});
+      
+      AFRAME.registerComponent('play-sound', {
+        init: function () {
+            var ambience = document.querySelector('#ambience');
+            var soundControls = document.querySelector('#soundControls');
+        this.el.addEventListener('click', function () {
+          myEl.components.sound.playSound();
+          soundControls.setAttribute('src', '#pause');
+            });
+        }
+      });
+
+    </script>
+  </head>
+  <body>
+    <a-scene background="color: black" 
+             fog="type: exponential; 
+                  color: black;
+                  density: .06;">
+      
+      <!--Assets-->
+      <a-assets>
+        <audio id="ambience" src="https://cdn.glitch.global/eafda2d9-60fd-45d4-abb0-abb716bd649a/basement%20ambience.m4a?v=1695032119377"></audio>
+        <video id="flickering-lights" loop="true" src="https://cdn.glitch.global/eafda2d9-60fd-45d4-abb0-abb716bd649a/IMG_7288.mov?v=1695031559760"></video>
+        <img id="play" src="https://cdn.glitch.global/eafda2d9-60fd-45d4-abb0-abb716bd649a/pinktile2.jpeg?v=1695031391226">
+        <img id="pause" src="https://cdn.glitch.global/eafda2d9-60fd-45d4-abb0-abb716bd649a/dither_it_Screenshot%202023-09-01%20at%201.42.37%20AM.png?v=1695031398808">
+      
+        <a-asset-item id="toilet-open" src="https://cdn.glitch.global/eafda2d9-60fd-45d4-abb0-abb716bd649a/toilet-open-1.glb?v=1695034492663"></a-asset-item>
+        <a-asset-item id="toilet-closed" src="https://cdn.glitch.global/eafda2d9-60fd-45d4-abb0-abb716bd649a/toilet1.glb?v=1695034493017"></a-asset-item>
+        <a-asset-item id="toilet-closed2" src="https://cdn.glitch.global/eafda2d9-60fd-45d4-abb0-abb716bd649a/toilet-closed-2.glb?v=1695034492304"></a-asset-item>
+        
+        <video id="basement1" loop="false" src="https://cdn.glitch.me/eafda2d9-60fd-45d4-abb0-abb716bd649a/IMG_7259.mp4?v=1695031897670"></video>
+        <video id="basement2" loop="false" src="https://cdn.glitch.me/eafda2d9-60fd-45d4-abb0-abb716bd649a/IMG_7258.MOV?v=1695036938275"></video>
+        <video id="basement3" loop="false" src="https://cdn.glitch.me/eafda2d9-60fd-45d4-abb0-abb716bd649a/IMG_7263.MOV?v=1695037174195"></video>
+        
+        <audio id="flush-sound" src="https://cdn.glitch.global/3f5651df-5d1f-4ac8-88de-455279824d51/New%20Recording%206.m4a?v=1694996266553"></audio>
+        <audio id="flush-sound2" src="https://cdn.glitch.global/3f5651df-5d1f-4ac8-88de-455279824d51/New%20Recording%206.m4a?v=1694996266553"></audio>
+        
+        <img id="floor-tile" src="https://cdn.glitch.global/3f5651df-5d1f-4ac8-88de-455279824d51/pexels-monstera-production-7794425.jpg?v=1694984143703"/>
+        <img id="floor-tile2" src="https://cdn.glitch.global/3f5651df-5d1f-4ac8-88de-455279824d51/pexels-ksenia-chernaya-5768318.jpg?v=1694984080925"/>
+        <img id="floor-tile3" src="https://cdn.glitch.global/3f5651df-5d1f-4ac8-88de-455279824d51/Screenshot%202023-09-17%20at%205.13.07%20PM.png?v=1694985198234"/>
+        
+        <img id="tile-normal" src="https://cdn.glitch.global/3f5651df-5d1f-4ac8-88de-455279824d51/tilenormal1.jpeg?v=1694986492869"/>
+        <img id="metal-normal" src="https://cdn.glitch.global/75fa5ead-dae7-46cc-97d6-a8ef54be84b1/metalplates-NRM.jpg?v=1693544717843">
+      </a-assets>
+      
+      <!--vids-->
+      <a-box id="videoControls" src="#play" position="0 5 5" play-pause></a-box>
+      <a-video id="lights-vid"
+               src="#flickering-lights" 
+               autoplay loop="true" 
+               width="48" height="78" 
+               position="-1.5 20 3"
+               rotation="90 90 0">
+      </a-video>
+      
+      <a-video id="basement-vid" 
+               src="#basement1" 
+               loop="false" 
+               width="9" height="60" 
+               position="20 5 7"
+               rotation="0 90 0">
+      </a-video>
+      
+      <a-video
+               src="#basement2" 
+               loop="false" 
+               width="9" height="60" 
+               position="20 10 -1"
+               rotation="0 90 0">
+      </a-video>
+      
+      <a-video
+               src="#basement3" 
+               loop="false" 
+               width="9" height="60" 
+               position="20 10 15"
+               rotation="0 90 0">
+      </a-video>
+      
+      <a-camera
+        position="-30 4 15"
+        rotation="0 180 0"
+        
+        cursor-visible="true"
+        cursor-scale="2"
+        cursor-color="#0095DD"
+        cursor-opacity="0.5">
+          <a-cursor></a-cursor>
+      </a-camera>
+      
+      <!--Ambient sound -->
+      <a-box id="soundControls" src="#play" position="-30 5 5" play-sound
+             sound="src: #ambience;
+                       on: click;
+                       loop: true;
+                       positional: true;
+                       volume: 10;
+                       refDistance: 50"></a-box>
+      
+      </a-entity>
+      
+      <!--models-->
+
+      <a-entity gltf-model="#toilet-open" position="6 0 0" scale="1.3 1.3 1.3"
+                light="shadowCameraRight:10; shadowCameraLeft:-10"
+                shadow="cast:true; receive: false;"
+                sound="src: #flush-sound;
+                       on: click;
+                       volume: 40;"></a-entity>
+      <a-entity gltf-model="#toilet-closed" position="6 0 6" scale="1.3 1.3 1.3"
+                light="shadowCameraRight:10; shadowCameraLeft:-10"
+                shadow="cast:true; receive: false;"
+                sound="src: #flush-sound;
+                       on: click;
+                       volume: 40;"></a-entity>
+      <a-entity gltf-model="#toilet-closed2" position="6 0 12" scale="1.3 1.3 1.3"
+                light="shadowCameraRight:10; shadowCameraLeft:-10"
+                shadow="cast:true; receive: false;"
+                sound="src: #flush-sound;
+                       on: click;
+                       volume: 40;"></a-entity>
+      
+      <!--text-->
+      <a-entity text="value: DONT FORGET TO FLUSH.; width: 75; height: 100;"
+                color="black" rotation="0 90 0" position="0 10 -18"></a-entity>
+      
+      <!--lights-->
+      
+      <a-light color="#FFFFFF" intensity=".4" position="0 10 0"
+             light="type:directional; castShadow:true;
+                    shadowCameraRight:10; shadowCameraLeft:-10;
+                    shadowCameraNear:-5; shadowCameraTop:10;"></a-light>
+      <a-light color="#FFFFFF" intensity=".3" position="20 10 -20"
+               light="type:directional; castShadow:true;
+               shadowCameraRight:15; shadowCameraLeft:-10;
+               shadowCameraNear:-5; shadowCameraTop:15;"></a-light>
+    
+   
+      <!--ground-->
+      <a-plane src="#floor-tile"
+               rotation="0 0 0" scale="1000 1000 1" position="5 0 -20" 
+               shadow="receive: true" repeat="70 70"></a-plane>
+      <a-plane src="#floor-tile2"
+               rotation="180 0 0" scale="1000 1000 1" position="5 0 20" 
+               shadow="receive: true" repeat="150 150"></a-plane>
+      
+      <a-plane src="#floor-tile3"
+               normal-map="#tile-normal"
+               color="pink" 
+               rotation="-90 45 0" scale="1000 1000 1" position="5 0 5" 
+               shadow="receive: true" repeat="300 300"></a-plane>
+    </a-scene>
+  </body>
+</html>

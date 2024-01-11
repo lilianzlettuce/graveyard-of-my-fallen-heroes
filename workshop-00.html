@@ -1,0 +1,63 @@
+<html>
+  <head>
+
+    <title>Sketch 01</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      
+      <a-camera
+        position="0 1 5"
+        cursor-visible="true"
+        cursor-scale="2"
+        cursor-color="#0095DD"
+        cursor-opacity="0.5">
+      </a-camera>
+      
+      <!--<a-light type="directional" color="#FFF" intensity="0.5" position="-1 1 2"></a-light>
+      <a-light type="ambient" color="#FFF"></a-light>-->
+
+      <a-sky color="#19142e"></a-sky>
+      
+      <a-torus-knot position="0 20 0" color="#b5180d" p="2" q="7" radius="5" radius-tubular="1" rotation="-90 0 0"></a-torus-knot>
+      
+      <a-torus position="0 20 0" color="#B84A39" arc="360" radius="5" radius-tubular="01" rotation="90 0 0"></a-torus>
+      <a-torus-knot position="0 20 0" color="#630901" p="6" q="20" radius="10" radius-tubular=".5" rotation="-90 0 0"></a-torus-knot>
+      
+      <!--cloud-->
+      <a-torus-knot position="0 50 0" color="#78251e" p="6" q="20" radius="50" radius-tubular="7" rotation="-90 0 0"></a-torus-knot>
+      
+      <!--beam-->
+      <a-cone color="white" radius-bottom="2" radius-top="0.1" height="40"></a-cone>
+      
+      <!--earth-->
+      <a-sphere position="0 -50 -5" radius="50" color="#7083ff"></a-sphere>
+      
+      
+      <!--
+<a-torus-knot color="#B84A39" arc="180" p="2" q="7" radius="5" radius-tubular="1"></a-torus-knot>
+<a-cone color="tomato" radius-bottom="2" radius-top="0.5"></a-cone>
+
+      <a-dodecahedron position="0 0 0" rotation="45 45 45" color="#FFFFFF" radius="1"></a-dodecahedron>
+      <a-icosahedron position="0 2 -1" rotation="0 0 0" color="#8c90ff" radius="1"></a-icosahedron>
+      <a-octahedron position="0 4 -2" rotation="0 0 0" color="#d5ff8c" radius="1"></a-octahedron>
+
+// ground thing
+      <a-torus color="#4efcfa" arc="180" radius="5" radius-tubular="01" rotation="0 0 0"></a-torus>
+      <a-torus-knot color="#B84A39" arc="180" p="2" q="7" radius="5" radius-tubular="1"></a-torus-knot>
+
+// 2 color donut
+<a-torus color="#4CC3D9" arc="180" radius="5" radius-tubular="01" rotation="0 0 0"></a-torus>
+      <a-torus color="#ff8ce6" arc="180" radius="5" radius-tubular="01" rotation="180 0 0"></a-torus>
+
+<a-box position="-2 0.5 -2" rotation="45 45 45" color="#4CC3D9"></a-box>
+      <a-box position="-2 -1 -2" rotation="135 45 45" color="#59f783"></a-box>
+      <a-sphere position="0 1.25 -5" radius="3" color="#ff8ce6"></a-sphere>
+      <a-cylinder position="1 0.75 -2" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 -6 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      -->
+
+    </a-scene>
+  </body>
+</html>
