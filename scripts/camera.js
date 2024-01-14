@@ -1,7 +1,8 @@
 AFRAME.registerComponent('camera-listener', {
     tick: function () {
         let cameraEl = this.el.sceneEl.camera.el
-        //test
+        
+        // Track camera rig if in VR mode
         if (this.el.sceneEl.is('vr-mode')) {
             cameraEl = document.getElementById('rig')
         }

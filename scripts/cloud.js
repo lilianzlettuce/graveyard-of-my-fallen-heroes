@@ -3,7 +3,7 @@ AFRAME.registerComponent("cloud", {
       
         // initial variable declaration
         let sceneEl = document.querySelector('a-scene')
-        let size = 10
+
         // min/max values for random cube position
         let minX = -50
         let maxX = 50
@@ -16,64 +16,83 @@ AFRAME.registerComponent("cloud", {
         cloud.id = 'cloud'
         sceneEl.appendChild(cloud)
         
-        let i = 1
+        let i = 1 // initial spawn rate
+        let size = 10 // initial size of cube
+        let generationInterval // incremental cube generation
+        let timeChangeInterval = 500 // amount of time before cube gen interval changes
         setInterval(() => {
-            // create a new a-entity
-            let cube = document.createElement('a-entity')
-            cube.classList.add('cloud-cube')
+            clearInterval(generationInterval)
 
-            // create base geometry
-            cube.setAttribute('geometry', {
-                        primitive: 'box',
-                        height: '0.1',
-                        width: '0.1',
-                        depth: '0.1',
-                    })
-            cube.setAttribute('material', {
-                color: '#ed1b24'
-            })
-            
-            // create random x, y, z position values within range:
-            let posX = Math.random() * (maxX - minX) + minX
-            let posY = Math.random() * (maxY - minY) + minY
-            let posZ = Math.random() * (maxZ - minZ) + minZ
-            
-            cube.setAttribute('position', posX.toString()+ ' '+posY.toString()+' '+posZ.toString());
-            cube.setAttribute('animation', {
-                property: 'scale',
-                to: size.toString()+ ' '+size.toString()+' '+size.toString(),
-                easing: 'easeOutElastic',
-                dur: '500'
-            })
+            // Set incremental size increase
+            let sizeIncr = 1 - 0.5 / i
+            sizeIncr = 0.5
 
-            // animation on click
-            cube.addEventListener('mouseenter', () => {
+            // Set time passed before next cube generates
+            let nextInterval = 100 / i 
+            nextInterval = 100 + (1000 / i)
+
+            generationInterval = setInterval(() => {
+                // create a new a-entity
+                let cube = document.createElement('a-entity')
+                cube.classList.add('cloud-cube')
+
+                // create base geometry
+                cube.setAttribute('geometry', {
+                            primitive: 'box',
+                            height: '0.1',
+                            width: '0.1',
+                            depth: '0.1',
+                        })
+                cube.setAttribute('material', {
+                    color: '#ed1b24'
+                })
+                
+                // create random x, y, z position values within range:
+                let posX = Math.random() * (maxX - minX) + minX
+                let posY = Math.random() * (maxY - minY) + minY
+                let posZ = Math.random() * (maxZ - minZ) + minZ
+                
+                cube.setAttribute('position', posX.toString()+ ' '+posY.toString()+' '+posZ.toString());
                 cube.setAttribute('animation', {
                     property: 'scale',
-                    to: '0 0 0',
+                    to: size.toString()+ ' '+size.toString()+' '+size.toString(),
                     easing: 'easeOutElastic',
-                    dur: '1000'
+                    dur: '500'
                 })
-            })
 
-            // fall after a set time 
-            setTimeout(() => {
-                cube.setAttribute("dynamic-body", "mass: 1")
-            }, 25000 /*15000*/);
+                // animation on click
+                cube.addEventListener('mouseenter', () => {
+                    cube.setAttribute('animation', {
+                        property: 'scale',
+                        to: '0 0 0',
+                        easing: 'easeOutElastic',
+                        dur: '1000'
+                    })
+                })
 
-            cloud.appendChild(cube)
 
-            // update gen values
-            /*let incr = 1
-            minX -= incr
-            maxX += incr
-            minY += incr
-            maxY += incr
-            minZ -= incr
-            maxZ += incr*/
+                cloud.appendChild(cube)
+
+                // fall after a set time 
+                let fallInterval = 15000 + 10000 / i
+                console.log(fallInterval)
+                setTimeout(() => {
+                    cube.setAttribute("dynamic-body", "mass: 1")
+                }, fallInterval /*15000*/)
+
+                // update gen values
+                /*let incr = 1
+                minX -= incr
+                maxX += incr
+                minY += incr
+                maxY += incr
+                minZ -= incr
+                maxZ += incr*/
+
+                size += sizeIncr
+            }, nextInterval)
 
             i++
-            size++
-        }, 100 / (1 * i))
+        }, timeChangeInterval)
     },
 })
