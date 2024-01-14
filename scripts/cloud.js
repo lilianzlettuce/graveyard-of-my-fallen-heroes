@@ -59,7 +59,7 @@ AFRAME.registerComponent("cloud", {
             // fall after a set time 
             setTimeout(() => {
                 cube.setAttribute("dynamic-body", "mass: 1")
-            }, 15000);
+            }, 25000 /*15000*/);
 
             cloud.appendChild(cube)
 

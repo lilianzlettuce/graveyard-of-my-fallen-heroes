@@ -22,12 +22,16 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <a-scene add-lamps rain cloud static-cloud
+        <a-scene add-lamps rain cloud static-cloud switch-1 
                 physics="debug: false; friction: 0.1; restitution: 0.5;"
                 background="color: black" 
                 fog="type: exponential; 
                 color: gray;
                 density: 0.01;">
+            
+            <!-- Oculus Controls-->
+            <a-entity oculus-touch-controls="hand: left"></a-entity>
+            <a-entity oculus-touch-controls="hand: right"></a-entity>
             
             <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
                 <a-camera
@@ -64,7 +68,7 @@
             <a-light id="blue-ambience" type="ambient" intensity="0" color="#0009ff"></a-light>
             <a-light color="#FFFFFF" intensity="0" position="20 10 20"></a-light>
             
-            <a-plane switch-1 static-body color="gray" rotation="-90 0 0" scale="800 800 1" position="0 -15 0" shadow="receive: true"></a-plane>
+            <a-plane static-body color="gray" rotation="-90 0 0" scale="800 800 1" position="0 -15 0" shadow="receive: true"></a-plane>
         </a-scene>
         <div class="menu" id="menu">
             <div class="controls-container">

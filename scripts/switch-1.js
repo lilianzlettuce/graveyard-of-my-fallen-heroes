@@ -5,8 +5,6 @@ AFRAME.registerComponent("switch-1", {
     let sceneEl = document.querySelector('a-scene')
     let ba = document.querySelector('#blue-ambience')
 
-    let el = this.el
-
     let rotateAnim = {
       property: 'rotation',
       to: '-360 0 0',
