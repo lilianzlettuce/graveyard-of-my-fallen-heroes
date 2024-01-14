@@ -2,7 +2,6 @@ AFRAME.registerComponent("static-cloud", {
     init: function () {
         // initial variable declaration
         let sceneEl = document.querySelector('a-scene')
-        let size = 50
         // min/max values for random cube position
         let minX = -50
         let maxX = 50
@@ -13,6 +12,7 @@ AFRAME.registerComponent("static-cloud", {
 
         let cloud = document.createElement('a-entity')
         cloud.id = 'static-cloud'
+        cloud.setAttribute('scale', '0 0 0')
         sceneEl.appendChild(cloud)
         
         let i = 1
@@ -39,6 +39,8 @@ AFRAME.registerComponent("static-cloud", {
                 let posZ = Math.random() * (maxZ - minZ) + minZ
                 
                 cube.setAttribute('position', posX.toString()+ ' '+posY.toString()+' '+posZ.toString());
+                
+                let size = 50 // cube size
                 cube.setAttribute('animation', {
                     property: 'scale',
                     to: size.toString()+ ' '+size.toString()+' '+size.toString(),
