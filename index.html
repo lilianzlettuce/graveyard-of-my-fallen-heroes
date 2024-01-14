@@ -1,7 +1,7 @@
 <html>
     <head>
 
-        <title>TIME TO PACK UP: Graveyard of My Fallen Heroes</title>
+        <title>BABADOOOO: Graveyard of My Fallen Heroes</title>
         <link rel="icon" type="image/x-icon" href="assets/lettuce.jpg">
         <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
@@ -31,13 +31,14 @@
                 density: 0.01;">
             
             <!-- Oculus Controls-->
-            <a-entity oculus-touch-controls oculus-button-listeners>
+            <a-entity oculus-touch-controls="hand: left" oculus-button-listeners>
                 <a-torus-knot fall-on-touch
                 arc="180" p="2" q="7" radius="5" radius-tubular="1" position="0 0 -10"
                 shadow="cast: true; receive: true;" 
                 material="color: cyan; transparent: true; opacity: 1"
                 animation="property: rotation; to: 0 0 360; loop: true; easing: linear; dur: 25000"></a-torus-knot>
             </a-entity>
+            <a-entity oculus-touch-controls="hand: right" oculus-button-listeners></a-entity>
             
             <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
                 <a-camera

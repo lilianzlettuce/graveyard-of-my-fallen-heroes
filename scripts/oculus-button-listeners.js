@@ -5,11 +5,13 @@ AFRAME.registerComponent('oculus-button-listeners', {
             el.setAttribute('visible', !el.getAttribute('visible'));
         })
 
-        let cameraEntity = document.getElementById('camera-entity')
         let numRotations = 1
 
         // Button events
         el.addEventListener("xbuttondown", () => {
+            let cameraEntity = document.getElementById('camera-entity')
+            let sceneEl = document.querySelector('a-scene')
+            let ba = document.querySelector('#blue-ambience')
             if (ba.getAttribute('intensity') == 0) {
                 // change to blue environment 
 
@@ -73,6 +75,7 @@ AFRAME.registerComponent('oculus-button-listeners', {
 
         if (evt.detail.y > 0.95) { 
             // DOWN
+            console.log('down thumb')
             z += 10
             cameraEntity.setAttribute('position', `${x} ${y} ${z}`)
         }
