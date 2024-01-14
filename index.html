@@ -8,6 +8,9 @@
         <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
 
+        <!-- Oculus thumbstick move controls-->
+        <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
+
         <script src="scripts/lamp-script.js"></script>
         <script src="scripts/fall-on-touch.js"></script>
         <script src="scripts/switch-1.js"></script>
@@ -30,28 +33,30 @@
                 color: gray;
                 density: 0.01;">
             
-            <!-- Oculus Controls-->
-            <a-entity oculus-touch-controls="hand: left" oculus-button-listeners>
-                <a-torus-knot fall-on-touch
-                arc="180" p="2" q="7" radius="5" radius-tubular="1" position="0 0 -10"
-                shadow="cast: true; receive: true;" 
-                material="color: cyan; transparent: true; opacity: 1"
-                animation="property: rotation; to: 0 0 360; loop: true; easing: linear; dur: 25000"></a-torus-knot>
-            </a-entity>
-            <a-entity oculus-touch-controls="hand: right" oculus-button-listeners></a-entity>
-            
-            <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
-                <a-camera
-                    static-body="mass: 1"
-                    position="0 1 0"
-                    rotation="0 180 0"
-                    wasd-controls="acceleration: 100"
-                    cursor-visible="true"
-                    cursor-scale="2"
-                    cursor-color="#0095DD"
-                    cursor-opacity="0.5">
-                    <a-cursor></a-cursor>
-                </a-camera>
+            <a-entity id="rig">
+                <!-- Oculus Controls-->
+                <a-entity oculus-touch-controls="hand: left" oculus-button-listeners oculus-thumbstick-controls>
+                    <a-torus-knot fall-on-touch
+                    arc="180" p="2" q="7" radius="1" radius-tubular="1" position="0 0 -10"
+                    shadow="cast: true; receive: true;" 
+                    material="color: cyan; transparent: true; opacity: 1"
+                    animation="property: rotation; to: 0 0 360; loop: true; easing: linear; dur: 25000"></a-torus-knot>
+                </a-entity>
+                <a-entity oculus-touch-controls="hand: right" oculus-button-listeners oculus-thumbstick-controls></a-entity>
+                
+                <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
+                    <a-camera
+                        static-body="mass: 1"
+                        position="0 1 0"
+                        rotation="0 180 0"
+                        wasd-controls="acceleration: 100"
+                        cursor-visible="true"
+                        cursor-scale="2"
+                        cursor-color="#0095DD"
+                        cursor-opacity="0.5">
+                        <a-cursor></a-cursor>
+                    </a-camera>
+                </a-entity>
             </a-entity>
 
             <a-sky radius="900" color="black"></a-sky>
