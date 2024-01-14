@@ -1,10 +1,6 @@
 AFRAME.registerComponent('oculus-button-listeners', {
     init: function () {
         let el = this.el
-        el.addEventListener('xbuttondown', function (evt) {
-            el.setAttribute('visible', !el.getAttribute('visible'));
-        })
-
         let numRotations = 1
 
         // Button events

@@ -1,6 +1,11 @@
 AFRAME.registerComponent('camera-listener', {
     tick: function () {
         let cameraEl = this.el.sceneEl.camera.el
+        //test
+        if (this.el.sceneEl.is('vr-mode')) {
+            cameraEl = document.getElementById('rig')
+        }
+
         let pos = cameraEl.getAttribute('position')
     
         let posStr = `${pos.x} ${pos.y} ${pos.z}`
@@ -43,6 +48,7 @@ AFRAME.registerComponent('camera-listener', {
             loop: false
         }
         
+        // Camera falls when reach
         if (pos.z < -402) {
             cameraEl.setAttribute('dynamic-body', '')
             /*cameraEntity.setAttribute('animation', rotateAnim)
