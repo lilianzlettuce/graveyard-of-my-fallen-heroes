@@ -1,3 +1,5 @@
+//import { toggle } from "./toggle-environment"
+
 AFRAME.registerComponent("switch-1", {
   init: function () {
 
@@ -16,6 +18,8 @@ AFRAME.registerComponent("switch-1", {
       dur: 2000,
       loop: false
     }
+
+
     let cameraEntity = document.getElementById('camera-entity')
     let numRotations = 1;
 
@@ -72,5 +76,13 @@ AFRAME.registerComponent("switch-1", {
         }
       }
     })
+
+    /*document.addEventListener("keydown", (e) => {
+      if (e.code == 'Space') {
+        console.log('space test')
+        toggle(numRotations)
+        numRotations++
+      }
+    })*/
   }
 })

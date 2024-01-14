@@ -15,6 +15,7 @@
         <script src="scripts/cloud.js"></script>
         <script src="scripts/staticCloud.js"></script>
         <script src="scripts/camera.js"></script>
+        <script src="scripts/oculus-button-listeners.js"></script>
 
         <script src="scripts/index.js"></script>
 
@@ -30,8 +31,13 @@
                 density: 0.01;">
             
             <!-- Oculus Controls-->
-            <a-entity oculus-touch-controls="hand: left"></a-entity>
-            <a-entity oculus-touch-controls="hand: right"></a-entity>
+            <a-entity oculus-touch-controls="hand: left" oculus-button-listeners>
+                <a-torus-knot fall-on-touch
+                arc="180" p="2" q="7" radius="5" radius-tubular="1" position="0 0 -10"
+                shadow="cast: true; receive: true;" 
+                material="color: cyan; transparent: true; opacity: 1"
+                animation="property: rotation; to: 0 0 360; loop: true; easing: linear; dur: 25000"></a-torus-knot>
+            </a-entity>
             
             <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
                 <a-camera
