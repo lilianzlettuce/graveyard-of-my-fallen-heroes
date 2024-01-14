@@ -1,14 +1,15 @@
 AFRAME.registerComponent('oculus-button-listeners', {
     init: function () {
-        var el = this.el;
+        let el = this.el
         el.addEventListener('xbuttondown', function (evt) {
             el.setAttribute('visible', !el.getAttribute('visible'));
-        });
+        })
 
         let cameraEntity = document.getElementById('camera-entity')
-        let numRotations = 1;
+        let numRotations = 1
 
-        document.addEventListener("xbuttondown", () => {
+        // Button events
+        el.addEventListener("xbuttondown", () => {
             if (ba.getAttribute('intensity') == 0) {
                 // change to blue environment 
 
@@ -59,5 +60,36 @@ AFRAME.registerComponent('oculus-button-listeners', {
                 }, 250);
             }
         })
+
+        // Thumbstick movements
+        this.el.addEventListener('thumbstickmoved', this.logThumbstick)
+    }, 
+    logThumbstick: function (evt) {
+        let cameraEntity = document.getElementById('camera-entity')
+        let cameraPos = cameraEntity.getAttribute('position').split(' ')
+        let x = cameraPos[0]
+        let y = cameraPos[1]
+        let z = cameraPos[2]
+
+        if (evt.detail.y > 0.95) { 
+            // DOWN
+            z += 10
+            cameraEntity.setAttribute('position', `${x} ${y} ${z}`)
+        }
+        if (evt.detail.y < -0.95) { 
+            // UP
+            z -= 10
+            cameraEntity.setAttribute('position', `${x} ${y} ${z}`)
+        }
+        if (evt.detail.x < -0.95) { 
+            // LEFT
+            x -= 10
+            cameraEntity.setAttribute('position', `${x} ${y} ${z}`)
+        }
+        if (evt.detail.x > 0.95) { 
+            // RIGHT
+            x += 10
+            cameraEntity.setAttribute('position', `${x} ${y} ${z}`)
+        }
     }
   });
