@@ -7,6 +7,7 @@
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+        <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script>
 
         <!-- Oculus thumbstick move controls-->
         <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
@@ -35,9 +36,9 @@
             
             <a-entity id="rig">
                 <!-- Oculus Controls-->
-                <a-entity oculus-touch-controls="hand: left" oculus-button-listeners oculus-thumbstick-controls>
+                <a-entity sphere-collider="objects: a-box" super-hands oculus-touch-controls="hand: left" oculus-button-listeners oculus-thumbstick-controls>
                 </a-entity>
-                <a-entity oculus-touch-controls="hand: right" oculus-button-listeners oculus-thumbstick-controls></a-entity>
+                <a-entity sphere-collider="objects: a-box" super-hands oculus-touch-controls="hand: right" oculus-button-listeners oculus-thumbstick-controls></a-entity>
                 
                 <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
                     <a-camera
@@ -53,6 +54,8 @@
                     </a-camera>
                 </a-entity>
             </a-entity>
+
+            <a-box hoverable grabbable stretchable draggable droppable color="blue" position="0 0 -1"></a-box>
 
             <a-sky radius="900" color="black"></a-sky>
 

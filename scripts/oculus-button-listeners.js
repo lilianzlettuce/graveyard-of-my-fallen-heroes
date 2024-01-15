@@ -4,7 +4,19 @@ AFRAME.registerComponent('oculus-button-listeners', {
         let numRotations = 1 // track camera rotations
 
         // Button events
+        el.addEventListener("abuttondown", () => {
+            this.toggleEnvr(numRotations)
+            numRotations++
+        })
+        el.addEventListener("bbuttondown", () => {
+            this.toggleEnvr(numRotations)
+            numRotations++
+        })
         el.addEventListener("xbuttondown", () => {
+            this.toggleEnvr(numRotations)
+            numRotations++
+        })
+        el.addEventListener("ybuttondown", () => {
             this.toggleEnvr(numRotations)
             numRotations++
         })
