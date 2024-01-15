@@ -64,8 +64,12 @@
             
             <a-entity id="rig">
                 <!-- Oculus Controls-->
-                <a-entity id="rhand" mixin="physics-hands" super-hands oculus-touch-controls="hand: left" oculus-button-listeners oculus-thumbstick-controls></a-entity>
-                <a-entity id="lhand" mixin="physics-hands" super-hands oculus-touch-controls="hand: right" oculus-button-listeners oculus-thumbstick-controls></a-entity>
+                <a-entity id="rhand" mixin="physics-hands" super-hands 
+                            oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="far: 2"
+                            oculus-button-listeners oculus-thumbstick-controls></a-entity>
+                <a-entity id="lhand" mixin="physics-hands" super-hands 
+                            oculus-touch-controls="hand: right" laser-controls="hand: right" raycaster="far: 5"
+                            oculus-button-listeners oculus-thumbstick-controls></a-entity>
                 
                 <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
                     <a-camera
@@ -82,7 +86,7 @@
                 </a-entity>
             </a-entity>
 
-            <a-box mixin="cube all-interactions" position="0 0 -15" scale="8 30 8" color="red" ></a-box>
+            <!--<a-box mixin="cube all-interactions" position="0 0 -15" scale="8 30 8" color="red" ></a-box>-->
 
             <a-sky radius="900" color="black"></a-sky>
 

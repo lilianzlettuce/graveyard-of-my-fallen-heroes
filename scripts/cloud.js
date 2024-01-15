@@ -51,7 +51,7 @@ AFRAME.registerComponent("cloud", {
                 })
 
                 // add superhands interaction mixin
-                cube.setAttribute('mixin', 'all-interactions')
+                //cube.setAttribute('mixin', 'all-interactions')
 
                 // min/max values for random cube position
                 let minX = -50

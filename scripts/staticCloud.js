@@ -32,6 +32,9 @@ AFRAME.registerComponent("static-cloud", {
                 cube.setAttribute('material', {
                     color: '#ed1b24'
                 })
+
+                // add superhands interaction mixin
+                //cube.setAttribute('mixin', 'all-interactions')
                 
                 // create random x, y, z position values within range:
                 let posX = Math.random() * (maxX - minX) + minX
