@@ -65,17 +65,23 @@
             <a-entity id="rig">
                 <!-- Oculus Controls-->
                 <a-entity id="rhand" mixin="physics-hands" super-hands 
-                                oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="far: 20"
+                                oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="far: 100"
                                 oculus-button-listeners oculus-thumbstick-controls
                                 cursor-visible="true"
                                 cursor-scale="2"
-                                cursor-color="#0095DD"
+                                cursor-color="#000000"
                                 cursor-opacity="0.5">
-                            <a-cursor></a-cursor>
-                        </a-entity>
+                    <a-cursor></a-cursor>
+                </a-entity>
                 <a-entity id="lhand" mixin="physics-hands" super-hands 
-                            oculus-touch-controls="hand: right" laser-controls="hand: right" raycaster="far: 50"
-                            oculus-button-listeners oculus-thumbstick-controls></a-entity>
+                            oculus-touch-controls="hand: right" laser-controls="hand: right" raycaster="far: 200"
+                            oculus-button-listeners oculus-thumbstick-controls
+                            cursor-visible="true"
+                            cursor-scale="2"
+                            cursor-color="#0095DD"
+                            cursor-opacity="0.5">
+                    <a-cursor></a-cursor>
+                </a-entity>
                 
                 <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
                     <a-camera
