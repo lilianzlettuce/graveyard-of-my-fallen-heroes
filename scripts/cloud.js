@@ -4,20 +4,21 @@ AFRAME.registerComponent("cloud", {
         // initial variable declaration
         let sceneEl = document.querySelector('a-scene')
 
-        // min/max values for random cube position
-        let minX = -50
-        let maxX = 50
-        let minY = 50
-        let maxY = 90
-        let minZ = -50
-        let maxZ = 50
-
         let cloud = document.createElement('a-entity')
         cloud.id = 'cloud'
         sceneEl.appendChild(cloud)
         
         let i = 1 // initial spawn rate
         let size = 10 // initial size of cube
+
+        // Variables for calculating generation rate
+        const MAXBUF = 10000
+        const MINBUF = 0
+        const BUFFER = Math.random() * (MAXBUF - MINBUF) + MINBUF
+        const MAXLIM = 100
+        const MINLIM = 1
+        const LIMIT = Math.random() * (MAXLIM - MINLIM) + MINLIM
+        
         let generationInterval // incremental cube generation
         let timeChangeInterval = 500 // amount of time before cube gen interval changes
         setInterval(() => {
@@ -26,10 +27,12 @@ AFRAME.registerComponent("cloud", {
             // Set incremental size increase
             let sizeIncr = 1 - 0.5 / i
             sizeIncr = 0.5
-
+            sizeIncr = 1
+                
             // Set time passed before next cube generates
-            let nextInterval = 100 / i 
-            nextInterval = 100 + (1000 / i)
+            let nextInterval = 100  
+            //nextInterval = 100 / i 
+            nextInterval = LIMIT + (BUFFER / i)
 
             generationInterval = setInterval(() => {
                 // create a new a-entity
@@ -46,6 +49,14 @@ AFRAME.registerComponent("cloud", {
                 cube.setAttribute('material', {
                     color: '#ed1b24'
                 })
+
+                // min/max values for random cube position
+                let minX = -50
+                let maxX = 50
+                let minY = 50
+                let maxY = 90
+                let minZ = -50
+                let maxZ = 50
                 
                 // create random x, y, z position values within range:
                 let posX = Math.random() * (maxX - minX) + minX
@@ -74,8 +85,7 @@ AFRAME.registerComponent("cloud", {
                 cloud.appendChild(cube)
 
                 // fall after a set time 
-                let fallInterval = 15000 + 10000 / i
-                console.log(fallInterval)
+                let fallInterval = 15000 /*+ 10000 / i*/
                 setTimeout(() => {
                     cube.setAttribute("dynamic-body", "mass: 1")
                 }, fallInterval /*15000*/)

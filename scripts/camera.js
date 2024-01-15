@@ -11,8 +11,6 @@ AFRAME.registerComponent('camera-listener', {
     
         let posStr = `${pos.x} ${pos.y} ${pos.z}`
 
-        console.log(posStr)
-
         // update camera entity pos to be same as camera pos
         let cameraEntity = document.getElementById('camera-entity')
         //cameraEntity.setAttribute('position', posStr)
