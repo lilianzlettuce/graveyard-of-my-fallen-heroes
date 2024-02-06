@@ -3,9 +3,12 @@
 
         <title>Atrophy</title>
         <link rel="icon" type="image/x-icon" href="assets/lettuce.jpg">
-        <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>-->
+        <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+
+        <script src="scripts/extended-wasd-controls.js"></script>
 
         <!-- Super hands -->
         <script src="https://unpkg.com/super-hands/dist/super-hands.min.js"></script>
@@ -62,7 +65,9 @@
                                             colliderEndEventProperty: clearedEls;"
                     ></a-mixin>-->
             
-            <a-entity id="rig">
+            <a-entity id="rig"
+                    movement-controls
+                    position="25 0 25">
                 <!-- Oculus Controls-->
                 <a-entity id="rhand" mixin="physics-hands" super-hands 
                                 oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="far: 100"
@@ -83,7 +88,8 @@
                     <a-cursor></a-cursor>
                 </a-entity>
                 
-                <a-entity id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
+                <a-entity extended-wasd-controls="flyEnabled: true; turnEnabled: true; lookEnabled: true; maxLookAngle: 60;"
+                id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
                     <a-camera
                         static-body="mass: 1"
                         position="0 1 0"
