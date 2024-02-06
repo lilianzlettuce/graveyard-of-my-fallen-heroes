@@ -65,9 +65,7 @@
                                             colliderEndEventProperty: clearedEls;"
                     ></a-mixin>-->
             
-            <a-entity id="rig"
-                    movement-controls
-                    position="25 0 25">
+            <a-entity id="rig" movement-controls>
                 <!-- Oculus Controls-->
                 <a-entity id="rhand" mixin="physics-hands" super-hands 
                                 oculus-touch-controls="hand: left" laser-controls="hand: left" raycaster="far: 100"
@@ -91,6 +89,7 @@
                 <a-entity extended-wasd-controls="flyEnabled: true; turnEnabled: true; lookEnabled: true; maxLookAngle: 60;"
                 id="camera-entity" camera-listener position="0 0 0" rotation="0 0 0">
                     <a-camera
+                        look-controls="pointerLockEnabled: true;"
                         static-body="mass: 1"
                         position="0 1 0"
                         rotation="0 180 0"
