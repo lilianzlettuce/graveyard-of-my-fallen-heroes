@@ -4,7 +4,9 @@ AFRAME.registerComponent("cloud", {
         // initial variable declaration
         let sceneEl = document.querySelector('a-scene')
 
+        // detect if mouse is down (positive = down, 0 or negative = up)
         let mouseDown = 0
+
         // mouse events for modifying cursor
         sceneEl.addEventListener('mousedown', () => {
             mouseDown++
@@ -18,10 +20,6 @@ AFRAME.registerComponent("cloud", {
             let cursor = document.getElementById('camera-cursor')
             cursor.setAttribute('material', 'color: black; opacity: .5; shader: flat')
         })
-
-        // detect if mouse is down
-        //document.body.onmousedown = () => mouseDown++
-        //document.body.onmouseup = () => mouseDown--
 
         let cloud = document.createElement('a-entity')
         cloud.id = 'cloud'
@@ -95,23 +93,25 @@ AFRAME.registerComponent("cloud", {
 
                 // on mouse down event
                 cube.addEventListener('mousedown', () => {
+                    // update mousedown checker
                     mouseDown = 1
-                        // despawn animation 
-                        cube.setAttribute('animation', {
-                            property: 'scale',
-                            to: '0 0 0',
-                            easing: 'easeOutElastic',
-                            dur: '1000'
-                        })
-                        // remove cube from DOM after anim
-                        setTimeout(() => {
-                            cube.parentNode.removeChild(cube)
-                        }, 1000)
+                    // despawn animation 
+                    cube.setAttribute('animation', {
+                        property: 'scale',
+                        to: '0 0 0',
+                        easing: 'easeOutElastic',
+                        dur: '1000'
+                    })
+                    // remove cube from DOM after anim
+                    setTimeout(() => {
+                        cube.parentNode.removeChild(cube)
+                    }, 1000)
                 })
                 cube.addEventListener('mouseenter', () => {
                     console.log(mouseDown)
                     // check if mouse is down
                     if (mouseDown > 0) {
+                        // update mousedown checker
                         mouseDown = 1
                         // despawn animation 
                         cube.setAttribute('animation', {
