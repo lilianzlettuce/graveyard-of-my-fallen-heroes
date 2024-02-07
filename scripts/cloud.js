@@ -4,6 +4,25 @@ AFRAME.registerComponent("cloud", {
         // initial variable declaration
         let sceneEl = document.querySelector('a-scene')
 
+        let mouseDown = 0
+        // mouse events for modifying cursor
+        sceneEl.addEventListener('mousedown', () => {
+            mouseDown++
+            // change cursor color
+            let cursor = document.getElementById('camera-cursor')
+            cursor.setAttribute('material', 'color: white; opacity: .5; shader: flat')
+        })
+        sceneEl.addEventListener('mouseup', () => {
+            mouseDown--
+            // change cursor color
+            let cursor = document.getElementById('camera-cursor')
+            cursor.setAttribute('material', 'color: black; opacity: .5; shader: flat')
+        })
+
+        // detect if mouse is down
+        //document.body.onmousedown = () => mouseDown++
+        //document.body.onmouseup = () => mouseDown--
+
         let cloud = document.createElement('a-entity')
         cloud.id = 'cloud'
         sceneEl.appendChild(cloud)
@@ -74,16 +93,39 @@ AFRAME.registerComponent("cloud", {
                     dur: '500'
                 })
 
-                // animation on click
-                cube.addEventListener('mouseenter', () => {
-                    cube.setAttribute('animation', {
-                        property: 'scale',
-                        to: '0 0 0',
-                        easing: 'easeOutElastic',
-                        dur: '1000'
-                    })
+                // on mouse down event
+                cube.addEventListener('mousedown', () => {
+                    mouseDown = 1
+                        // despawn animation 
+                        cube.setAttribute('animation', {
+                            property: 'scale',
+                            to: '0 0 0',
+                            easing: 'easeOutElastic',
+                            dur: '1000'
+                        })
+                        // remove cube from DOM after anim
+                        setTimeout(() => {
+                            cube.parentNode.removeChild(cube)
+                        }, 1000)
                 })
-
+                cube.addEventListener('mouseenter', () => {
+                    console.log(mouseDown)
+                    // check if mouse is down
+                    if (mouseDown > 0) {
+                        mouseDown = 1
+                        // despawn animation 
+                        cube.setAttribute('animation', {
+                            property: 'scale',
+                            to: '0 0 0',
+                            easing: 'easeOutElastic',
+                            dur: '1000'
+                        })
+                        // remove cube from DOM after anim
+                        setTimeout(() => {
+                            cube.parentNode.removeChild(cube)
+                        }, 1000)
+                    }
+                })
 
                 cloud.appendChild(cube)
 
